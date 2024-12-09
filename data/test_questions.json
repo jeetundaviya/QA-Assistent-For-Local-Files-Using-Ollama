@@ -1,0 +1,14 @@
+[
+    {
+        "question": "What is the main topic of the document?",
+        "answer": "The document explains the basics of machine learning."
+    },
+    {
+        "question": "How does it define supervised learning?",
+        "answer": "Supervised learning is defined as training a model using labeled data."
+    },
+    {
+        "question": "What are the key use cases of NLP?",
+        "answer": "The key use cases are sentiment analysis, chatbots, and translation."
+    }
+]

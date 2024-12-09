@@ -1,0 +1,13 @@
+paths:
+  raw_data_dir: "data/raw/"
+  processed_data_dir: "data/processed/"
+  vector_store_dir: "data/vector_store/"
+  test_data_file: "data/test_questions.json"
+
+model:
+  name: "llama2"
+  embedding_server: "http://localhost:11434/api/embedding"
+
+text_splitter:
+  chunk_size: 512
+  chunk_overlap: 50
