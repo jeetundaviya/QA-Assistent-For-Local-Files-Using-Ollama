@@ -229,6 +229,35 @@ rag_chatbot/
 
 ---
 
+## MLOps Pipeline
+
+The **MLOps Pipeline** for this project integrates model development, deployment, and performance monitoring to ensure a robust, reproducible, and efficient workflow. Below is the structure of the pipeline:
+
+1. **Data Ingestion**:
+   - Documents (e.g., PDF, Word) are uploaded and processed by the system. The text is extracted, preprocessed, and split into smaller chunks.
+   - The documents are stored in a FAISS index to facilitate fast similarity-based searches.
+
+2. **Model Training**:
+   - **Ollama LLM** (or similar models) are used for question-answering. The model is used to process the retrieved documents based on user queries.
+
+3. **Model Evaluation**:
+   - A dedicated evaluation pipeline assesses the chatbot’s performance using predefined metrics like **accuracy**, **latency**, and **fallback rate**.
+   - The evaluation also involves **human-judgment scoring** based on the answers provided by the model.
+   - Results from the evaluation are recorded and used to adjust model parameters for improved performance.
+
+4. **Deployment**:
+   - The chatbot is deployed as a FastAPI application for serving real-time queries.
+   - Continuous monitoring and logging ensure that the system operates smoothly and provides insights for performance improvements.
+
+5. **Continuous Integration/Continuous Deployment (CI/CD)**:
+   - **CI/CD pipelines** can be set up using tools like GitHub Actions, Jenkins, or GitLab CI to automatically test and deploy updates.
+   - Ensure that new changes do not break the pipeline by running automated tests on every push.
+
+6. **Performance Monitoring**:
+   - **Latency** and **fallback rates** are regularly tracked to ensure the model performs within the desired thresholds.
+   - Evaluation reports are used to monitor progress and make informed decisions about further optimizations.
+   
+---
 ## **Future Enhancements**
 
 - Add user authentication for secure access.
