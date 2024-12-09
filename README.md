@@ -62,6 +62,15 @@ uvicorn app:app --reload
 
 APIs will be available at `http://127.0.0.1:8000`.
 
+### Running Tests
+
+To run the tests and evaluate the chatbot performance:
+
+```bash
+python -m pytest --capture=no tests/test_evaluation.py
+```
+
+
 ### **2. Run the Frontend**
 
 Launch the Streamlit application.

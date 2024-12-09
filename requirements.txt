@@ -16,3 +16,4 @@ langchain-text-splitters
 streamlit
 filetype
 langgraph
+pytest

@@ -11,7 +11,7 @@ def save_faiss_store(vector_store, file_path):
 
 def load_faiss_store(file_path, model="all-minilm"):
     embeddings = get_ollama_embedding_model(model)
-    return FAISS.load_local(file_path, embeddings)
+    return FAISS.load_local(file_path, embeddings,allow_dangerous_deserialization=True)
 
 def query_faiss_index(faiss_index, query, k=3):
     return faiss_index.similarity_search(query, k)

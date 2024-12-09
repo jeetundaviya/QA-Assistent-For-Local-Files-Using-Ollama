@@ -1,0 +1,14 @@
+[
+    {
+        "question": "Where is Jeet currenlty employed at ??",
+        "expected_answer": "Jeet Undaviya is currently employed as a Software Engineer at Motorola Solutions in Bengaluru, Karnataka."
+    },
+    {
+        "question": "Which technologies is Jeet proficient in?",
+        "expected_answer": "Jeet Undaviya is proficient in: 1. Objective-C, C/C++, iOS Development, Java, Python, Flutter/Dart, c#, Android" 
+    },
+    {
+        "question": "What is Jeet's current role?",
+        "expected_answer": "Jeet Undaviya is currently a Software Engineer at Motorola Solutions in Bengaluru, Karnataka."
+    }
+]
