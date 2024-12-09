@@ -6,7 +6,6 @@ import numpy as np
 
 # Adding folder path to sys.path
 sys.path.append('/Users/jeetundaviya/Documents/rag_chatbot')
-print(sys.path)
 
 from src.evaluation.evaluate import evaluate_chatbot_performance
 from src.vector_store.faiss_store import load_faiss_store

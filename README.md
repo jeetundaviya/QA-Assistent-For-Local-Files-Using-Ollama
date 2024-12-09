@@ -70,6 +70,68 @@ To run the tests and evaluate the chatbot performance:
 python -m pytest --capture=no tests/test_evaluation.py
 ```
 
+### Sample Output
+
+```
+================== test session starts ===================
+platform darwin -- Python 3.11.4, pytest-8.3.4, pluggy-1.5.0
+rootdir: /Users/jeetundaviya/Documents/Projects/rag_chatbot
+plugins: anyio-4.7.0
+collected 1 item                                         
+
+tests/test_evaluation.py FAISS index saved to: src/vector_store/faiss_index.bin
+================================ Human Message =================================
+
+Where is Jeet currently employed at ??
+================================== Ai Message ==================================
+
+Jeet Undaviya is currently employed as a Software Engineer at Motorola Solutions in Bengaluru, Karnataka.
+[+] Judgement Score :- 1.0
+================================ Human Message =================================
+
+Which technologies is Jeet proficient in?
+================================== Ai Message ==================================
+
+According to the provided context, Jeet Undaviya is proficient in:
+
+1. Objective-C
+2. C/C++
+3. iOS Development (Swift)
+4. Java
+5. Python
+6. Flutter/Dart
+7. C#
+8. Android
+[+] Judgement Score :- 0.9
+================================ Human Message =================================
+
+What is Jeet's current role?
+================================== Ai Message ==================================
+
+Jeet Undaviya is currently a Software Engineer at Motorola Solutions in Bengaluru, Karnataka.
+[+] Judgement Score :- 1.0
+{'average_judgment_score': 0.9666666666666667, 'average_latency': 1.8116357326507568, 'fallback_rate': 0.0, 'total_queries': 3}
+
+==================== warnings summary ====================
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyPacked has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type SwigPyObject has no __module__ attribute
+
+<frozen importlib._bootstrap>:241
+  <frozen importlib._bootstrap>:241: DeprecationWarning: builtin type swigvarlink has no __module__ attribute
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============= 1 passed, 3 warnings in 7.60s ==============
+```
+
+### Evaluation Metrics
+
+- **Average Judgment Score**: 0.97
+- **Average Latency**: 1.81 seconds
+- **Fallback Rate**: 0.0 (No fallback responses)
+- **Total Queries**: 3
 
 ### **2. Run the Frontend**
 
@@ -129,24 +191,32 @@ curl -X POST -F "file=@your_document.pdf" http://127.0.0.1:8000/upload/
 ## **Folder Structure**
 
 ```plaintext
-.
-├── backend/                      # Backend APIs and logic
-│   ├── app.py                    # Main FastAPI application
-│   ├── requirements.txt          # Backend dependencies
-│   └── __init__.py
-├── frontend/                     # Streamlit application
-│   ├── app.py                    # Streamlit frontend
-│   └── requirements.txt          # Frontend dependencies
-├── src/                          # Core logic and utilities
-│   ├── embeddings/               # Embedding generation
-│   ├── preprocessing/            # Document loading and text splitting
-│   ├── vector_store/             # FAISS vector store logic
-│   ├── qa_pipeline/              # LangChain QA pipeline
-│   ├── evaluation/               # EDA and visualization scripts
-│   ├── utils/                    # Logger and constants
-├── .gitignore                    # Ignored files and folders
-├── README.md                     # Project documentation
-└── requirements.txt              # Global dependencies
+rag_chatbot/
+│
+├── src/
+│   ├── embeddings/              # Embedding models and utilities
+│   │   ├── ollama_embedding.py # Ollama embeddings
+│   ├── evaluation/              # Performance evaluation
+│   │   └── evaluate.py         # Evaluation logic
+│   ├── preprocessing/           # Document preprocessing (loading, splitting)
+│   │   ├── document_loader.py  # Document loading functions
+│   │   └── text_splitter.py    # Text chunking for long documents
+│   ├── qa_pipeline/             # Question-Answering pipeline
+│   │   └── langchain_qa.py     # LangChain-based QA pipeline
+│   ├── utils/                   # Utility functions (logging, constants)
+│   │   ├── constants.py        # Constants used in the project
+│   │   └── logger.py           # Logging configuration
+│   └── vector_store/            # Vector store (FAISS)
+│       ├── faiss_store.py      # FAISS indexing and querying
+│       └── faiss_index.bin     # FAISS index file
+│
+├── tests/                       # Test cases for evaluation and other components
+│   └── test_evaluation.py      # Test cases for chatbot evaluation
+│
+├── .gitignore                   # Git ignore file
+├── LICENSE                      # License file
+├── README.md                    # Project documentation
+└── requirements.txt             # Python dependencies
 ```
 
 ---

@@ -15,7 +15,6 @@ llm = OllamaLLM(model="llama3.2", temperature=0.5)
 
 # Define a prompt for the LLM to judge the answers
 judgment_prompt = PromptTemplate(
-    input_variables=["predicted_answer", "ground_truth"],
     template="""
         You are a highly skilled judge. Given the predicted answer and the ground truth, 
         please rate how correct the predicted answer is based on the ground truth. 
@@ -31,8 +30,13 @@ judgment_prompt = PromptTemplate(
 
 # Function to get the judgment score
 def get_llm_judgment(question:str,predicted_answer: str, ground_truth: str) -> float:
-    prompt = judgment_prompt.format(question=question,predicted_answer=predicted_answer, ground_truth=ground_truth)
-    response = llm(prompt)
+    # prompt = judgment_prompt.format(question=question,predicted_answer=predicted_answer, ground_truth=ground_truth)
+    chain = judgment_prompt|llm
+    response = chain.invoke({
+        "question":question,
+        "predicted_answer":predicted_answer,
+        "ground_truth":ground_truth
+    })
     try:
         # Assuming the LLM response is a number between 0 and 1
         judgment_score = float(response.strip())  
@@ -73,7 +77,7 @@ def evaluate_chatbot_performance(vector_store, model="llama3.2", test_file="test
         judgment_score = get_llm_judgment(question, predicted_answer, ground_truth)
         judgment_scores.append(judgment_score)
 
-        print("Print")
+        print(f"[+] Judgement Score :- {judgment_score}")
 
         # Check fallback
         if predicted_answer.lower() == "i don't know the answer":
