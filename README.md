@@ -56,8 +56,7 @@ pip install -r requirements.txt
 Start the FastAPI server to expose the REST APIs.
 
 ```bash
-cd backend
-uvicorn app:app --reload
+uvicorn backend.app:app --reload
 ```
 
 APIs will be available at `http://127.0.0.1:8000`.
